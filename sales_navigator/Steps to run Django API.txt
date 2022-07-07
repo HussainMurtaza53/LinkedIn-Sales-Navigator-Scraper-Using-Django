@@ -1,2 +1,4 @@
 1. python3 manage.py runserver 0.0.0.0:8000
 2. http://49.12.245.14:8000/v0/linked
+3. http://49.12.245.14:8000/v0/linked/1
+4. http://49.12.245.14:8000/v0/linked/download/1

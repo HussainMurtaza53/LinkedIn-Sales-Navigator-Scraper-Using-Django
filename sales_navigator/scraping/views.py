@@ -82,3 +82,28 @@ class Download_Job(APIView):
 
         except Exception as e:
             return Response({'Error': str(e)})
+
+class Stop_Job(APIView):
+    
+    def get(self, request, *args, **kwargs):
+        
+        try:
+            job_id = int(str(self.request).split('/')[-1].replace("'>", ""))
+            Job_Status.objects.filter(job_id = job_id).update(job_status = 'stop')
+            
+            return Response({'Success': True})
+
+        except Exception as e:
+            return Response({'Error': str(e)})
+
+class Get_All_Running_Jobs(APIView):
+    
+    def get(self, request):
+        
+        try:
+            job_data = Job_Status.objects.filter(job_status = 'running').values()
+            
+            return Response(job_data)
+
+        except Exception as e:
+            return Response({'Error': str(e)})
